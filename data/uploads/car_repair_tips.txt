@@ -26,4 +26,3 @@ This document contains simple explanations for fixing common car issues:
    - Recharge refrigerant
    - Inspect AC compressor
    - Check coolant sensor
-

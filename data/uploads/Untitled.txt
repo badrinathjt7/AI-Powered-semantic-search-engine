@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Search Complete Presentation</title>
+    <style>
+        @media print {
+            .page-break { page-break-before: always; }
+            .no-print { display: none; }
+            body { font-size: 11pt; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .slide {
+            background: white;
+            padding: 50px;
+            margin: 20px auto;
+            max-width: 1200px;
+            min-height: 750px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .title-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .title-slide h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+        
+        .title-slide .subtitle {
+            font-size: 1.8em;
+            opacity: 0.9;
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #764ba2;
+            font-size: 1.6em;
+            margin: 20px 0 12px 0;
+        }
+        
+        h3 {
+            color: #555;
+            font-size: 1.3em;
+            margin: 15px 0 8px 0;
+        }
+        
+        .framework-box {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 18px;
+            margin: 18px 0;
+        }
+        
+        .why-box { border-left-color: #3b82f6; background: #eff6ff; }
+        .what-box { border-left-color: #10b981; background: #ecfdf5; }
+        .how-box { border-left-color: #8b5cf6; background: #f5f3ff; }
+        
+        .framework-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 0.85em;
+        }
+        
+        .key-insight {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #78350f;
+            padding: 18px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.05em;
+            margin: 20px 0;
+        }
+        
+        .example-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .comparison-row {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .search-query {
+            flex: 1;
+            background: #eff6ff;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .arrow {
+            margin: 0 15px;
+            font-size: 1.5em;
+            color: #667eea;
+        }
+        
+        .search-result {
+            flex: 2;
+            background: #ecfdf5;
+            padding: 12px;
+            border-radius: 5px;
+        }
+        
+        .icon {
+            font-size: 2.5em;
+            margin-bottom: 12px;
+        }
+        
+        .print-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            z-index: 1000;
+        }
+        
+        .print-button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        
+        .highlight {
+            background: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        
+        .vs-section {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            margin: 25px 0;
+        }
+        
+        .vs-card {
+            border: 3px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 25px;
+            min-height: 300px;
+        }
+        
+        .vs-divider {
+            font-size: 3em;
+            font-weight: bold;
+            color: #ef4444;
+        }
+        
+        ul {
+            margin-left: 25px;
+            margin-top: 8px;
+        }
+        
+        li {
+            margin: 6px 0;
+        }
+        
+        .step-box {
+            background: white;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button no-print" onclick="window.print()">🖨️ Print to PDF</button>
+
+    <!-- Slide 1: Title -->
+    <div class="slide title-slide">
+        <div class="icon">🔍</div>
+        <h1>Semantic Search</h1>
+        <div class="subtitle">Understanding Meaning, Not Just Keywords</div>
+        <p style="margin-top: 40px; font-size: 1.2em;">How AI Changed the Way We Search</p>
+    </div>
+
+    <!-- Slide 2: What is Semantic Search -->
+    <div class="slide page-break">
+        <h1>What is Semantic Search?</h1>
+        
+        <div class="framework-box why-box">
+            <div class="framework-title">🎯 WHY it matters</div>
+            <p>Traditional keyword search fails when users don't use exact words. Semantic search understands <strong>intent and meaning</strong>, making search smarter and more natural.</p>
+        </div>
+        
+        <div class="framework-box what-box">
+            <div class="framework-title">📊 WHAT it is</div>
+            <p><strong>Semantic Search</strong> = Search that understands the <span class="highlight">meaning</span> and <span class="highlight">context</span> of your query, not just matching keywords.</p>
+            <p style="margin-top: 10px;">It understands synonyms, related concepts, and user intent.</p>
+        </div>
+        
+        <div class="framework-box how-box">
+            <div class="framework-title">⚡ HOW it works</div>
+            <p>Uses <strong>AI and Natural Language Processing (NLP)</strong> to convert text into mathematical vectors that capture meaning. Similar meanings have similar vectors.</p>
+        </div>
+
+        <div class="key-insight">
+            🔑 Key Difference: Keyword search = "Find these exact words" | Semantic search = "Find this meaning"
+        </div>
+    </div>
+
+    <!-- Slide 3: Lexical vs Semantic Search -->
+    <div class="slide page-break">
+        <h1>Lexical Search vs Semantic Search</h1>
+        
+        <div class="vs-section">
+            <div class="vs-card" style="border-color: #ef4444;">
+                <h2 style="color: #ef4444;">📝 Lexical Search</h2>
+                <h3>How it works:</h3>
+                <p>Matches exact words/tokens using inverted indexes (TF-IDF, BM25)</p>
+                
+                <h3 style="margin-top: 20px;">Characteristics:</h3>
+                <ul>
+                    <li>Keyword/token matching</li>
+                    <li>Fast and efficient</li>
+                    <li>Misses synonyms</li>
+                    <li>No context understanding</li>
+                    <li>Spelling sensitive</li>
+                </ul>
+                
+                <div style="background: #fee2e2; padding: 15px; margin-top: 20px; border-radius: 8px;">
+                    <strong>Example:</strong><br>
+                    Query: "car repair"<br>
+                    ❌ Misses: "automobile fix", "vehicle maintenance"<br>
+                    ✅ Finds: Only exact "car repair" matches
+                </div>
+            </div>
+            
+            <div class="vs-divider">VS</div>
+            
+            <div class="vs-card" style="border-color: #10b981;">
+                <h2 style="color: #10b981;">🧠 Semantic Search</h2>
+                <h3>How it works:</h3>
+                <p>Understands meaning using vector embeddings (neural networks)</p>
+                
+                <h3 style="margin-top: 20px;">Characteristics:</h3>
+                <ul>
+                    <li>Meaning-based matching</li>
+                    <li>Finds synonyms</li>
+                    <li>Context-aware</li>
+                    <li>Intent recognition</li>
+                    <li>Handles typos better</li>
+                </ul>
+                
+                <div style="background: #d1fae5; padding: 15px; margin-top: 20px; border-radius: 8px;">
+                    <strong>Example:</strong><br>
+                    Query: "car repair"<br>
+                    ✅ Finds: "automobile fix", "vehicle maintenance", "auto service"<br>
+                    Understands: All mean the same thing
+                </div>
+            </div>
+        </div>
+        
+        <div class="key-insight">
+            🔑 Lexical = Exact word matching | Semantic = Meaning understanding
+        </div>
+    </div>
+
+    <!-- Slide 3A: Contextual vs Semantic Search -->
+    <div class="slide page-break">
+        <h1>Contextual Search vs Semantic Search</h1>
+        
+        <div class="vs-section">
+            <div class="vs-card" style="border-color: #f59e0b;">
+                <h2 style="color: #f59e0b;">📍 Contextual Search</h2>
+                <h3>How it works:</h3>
+                <p>Uses user context (location, history, time, device) to personalize results</p>
+                
+                <h3 style="margin-top: 20px;">Characteristics:</h3>
+                <ul>
+                    <li>User-specific personalization</li>
+                    <li>Location-aware</li>
+                    <li>History-based</li>
+                    <li>Time-sensitive</li>
+                    <li>Behavior tracking</li>
+                </ul>
+                
+                <div style="background: #fef3c7; padding: 15px; margin-top: 20px; border-radius: 8px;">
+                    <strong>Example:</strong><br>
+                    Query: "best restaurants"<br>
+                    📍 User in Mumbai → Shows Mumbai restaurants<br>
+                    📍 User in Delhi → Shows Delhi restaurants<br>
+                    ⏰ 8 AM → Breakfast places<br>
+                    ⏰ 8 PM → Dinner places
+                </div>
+            </div>
+            
+            <div class="vs-divider">VS</div>
+            
+            <div class="vs-card" style="border-color: #8b5cf6;">
+                <h2 style="color: #8b5cf6;">🧠 Semantic Search</h2>
+                <h3>How it works:</h3>
+                <p>Understands query meaning independent of user context</p>
+                
+                <h3 style="margin-top: 20px;">Characteristics:</h3>
+                <ul>
+                    <li>Meaning-based</li>
+                    <li>Context-independent</li>
+                    <li>Conceptual understanding</li>
+                    <li>Synonym recognition</li>
+                    <li>Intent interpretation</li>
+                </ul>
+                
+                <div style="background: #f5f3ff; padding: 15px; margin-top: 20px; border-radius: 8px;">
+                    <strong>Example:</strong><br>
+                    Query: "best restaurants"<br>
+                    🧠 Understands: "top dining", "great eateries", "excellent food places"<br>
+                    Same for all users (unless combined with context)
+                </div>
+            </div>
+        </div>
+        
+        <div class="key-insight">
+            🔑 Contextual = WHO is searching (personalization) | Semantic = WHAT they mean (understanding)
+        </div>
+        
+        <div style="background: #eff6ff; padding: 20px; border-radius: 10px; margin-top: 20px;">
+            <h3>💡 Best Approach: Combine Both!</h3>
+            <p><strong>Semantic search</strong> understands the query meaning, then <strong>contextual filtering</strong> personalizes results based on user context.</p>
+            <p style="margin-top: 10px;"><strong>Example:</strong> "pizza places" → Semantic finds all pizza restaurants + Contextual shows ones near you, open now, matching your price preferences.</p>
+        </div>
+    </div>
+
+    <!-- Slide 3B: Vector vs Semantic Search -->
+    <div class="slide page-break">
+        <h1>Vector Search vs Semantic Search</h1>
+        
+        <div style="background: #fef3c7; padding: 25px; border-radius: 10px; margin-bottom: 25px; border: 3px solid #f59e0b;">
+            <h2 style="color: #78350f; margin-top: 0;">⚠️ Important Clarification!</h2>
+            <p style="font-size: 1.15em;"><strong>Vector search and semantic search are often the SAME thing!</strong></p>
+            <p style="margin-top: 10px;">Vector search is the <strong>technical implementation</strong> of semantic search. Let's understand the nuance:</p>
+        </div>
+        
+        <div class="vs-section">
+            <div class="vs-card" style="border-color: #8b5cf6;">
+                <h2 style="color: #8b5cf6;">🔢 Vector Search</h2>
+                <h3>What it is:</h3>
+                <p><strong>The technical mechanism</strong> - searching through numerical vectors using similarity metrics</p>
+                
+                <h3 style="margin-top: 20px;">Focus:</h3>
+                <ul>
+                    <li>Mathematical operation</li>
+                    <li>Similarity calculation (cosine, dot product)</li>
+                    <li>Vector databases</li>
+                    <li>Embeddings storage & retrieval</li>
+                    <li>Technical implementation</li>
+                </ul>
+                
+                <div style="background: #f5f3ff; padding: 15px; margin-top: 20px; border-radius: 8px; font-size: 0.9em;">
+                    <strong>Technical View:</strong>
+                    <div class="code-block" style="font-size: 0.8em; margin-top: 10px;">
+query_vec = [0.8, 0.2, 0.5, ...]
+doc_vec = [0.75, 0.25, 0.48, ...]
+similarity = cosine(query_vec, doc_vec)
+# Result: 0.95 (95% similar)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="vs-divider">=</div>
+            
+            <div class="vs-card" style="border-color: #10b981;">
+                <h2 style="color: #10b981;">🧠 Semantic Search</h2>
+                <h3>What it is:</h3>
+                <p><strong>The user-facing capability</strong> - understanding meaning and finding conceptually similar content</p>
+                
+                <h3 style="margin-top: 20px;">Focus:</h3>
+                <ul>
+                    <li>User experience</li>
+                    <li>Meaning understanding</li>
+                    <li>Natural language queries</li>
+                    <li>Intent recognition</li>
+                    <li>Business outcome</li>
+                </ul>
+                
+                <div style="background: #d1fae5; padding: 15px; margin-top: 20px; border-radius: 8px; font-size: 0.9em;">
+                    <strong>User View:</strong><br><br>
+                    User searches: "laptop for coding"<br><br>
+                    ✅ Finds: "programming workstation", "developer machine", "coding laptop"<br><br>
+                    User doesn't see vectors - just relevant results!
+                </div>
+            </div>
+        </div>
+        
+        <div class="key-insight">
+            🔑 Vector Search = HOW it works (technology) | Semantic Search = WHAT it does (capability)
+        </div>
+        
+        <h2 style="margin-top: 25px;">The Relationship:</h2>
+        <div style="background: #eff6ff; padding: 20px; border-radius: 10px; border-left: 5px solid #3b82f6;">
+            <p style="font-size: 1.1em; line-height: 1.8;">
+                <strong>Semantic search</strong> is typically <strong>implemented using</strong> vector search.<br><br>
+                Vector embeddings (from AI models) capture semantic meaning → Vector search finds similar vectors → User experiences semantic search!
+            </p>
+        </div>
+        
+        <h2 style="margin-top: 25px;">When They Differ:</h2>
+        <table style="margin-top: 15px;">
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Pure Vector Search</strong></td>
+                    <td>Finding similar images by visual features (not semantic meaning of content)</td>
+                </tr>
+                <tr>
+                    <td><strong>Semantic Without Vectors</strong></td>
+                    <td>Knowledge graphs, ontologies (rare, less effective than vectors)</td>
+                </tr>
+                <tr>
+                    <td><strong>Vector for Non-Semantic</strong></td>
+                    <td>Recommendation systems using collaborative filtering (similar users, not meanings)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="slide page-break">
+        <h1>Real-World Examples</h1>
+        
+        <div class="example-box">
+            <h3>Example 1: Travel Query</h3>
+            <div class="comparison-row">
+                <div class="search-query">🔍 "cheap flights to Europe"</div>
+                <div class="arrow">→</div>
+                <div class="search-result">
+                    <strong>Keyword:</strong> Only pages with "cheap flights to Europe"<br>
+                    <strong>Semantic:</strong> Also finds "budget airlines", "affordable travel", "economical trips", "discount airfare"
+                </div>
+            </div>
+        </div>
+
+        <div class="example-box">
+            <h3>Example 2: Medical Query</h3>
+            <div class="comparison-row">
+                <div class="search-query">🔍 "I have a headache and feel dizzy"</div>
+                <div class="arrow">→</div>
+                <div class="search-result">
+                    <strong>Keyword:</strong> Looks for exact phrase<br>
+                    <strong>Semantic:</strong> Understands symptoms, finds "migraine", "vertigo", "head pain with dizziness"
+                </div>
+            </div>
+        </div>
+
+        <div class="example-box">
+            <h3>Example 3: E-commerce Query</h3>
+            <div class="comparison-row">
+                <div class="search-query">🔍 "laptop for programming"</div>
+                <div class="arrow">→</div>
+                <div class="search-result">
+                    <strong>Keyword:</strong> Only exact match products<br>
+                    <strong>Semantic:</strong> Finds "developer laptop", "coding machine", "programming workstation", products with high RAM/CPU
+                </div>
+            </div>
+        </div>
+
+        <div class="key-insight">
+            💡 Semantic search understands what you MEAN, not just what you SAY!
+        </div>
+    </div>
+
+    <!-- Slide 5: How Semantic Search Works -->
+    <div class="slide page-break">
+        <h1>How Semantic Search Works</h1>
+        <h2>The Technical Process</h2>
+        
+        <div class="step-box">
+            <span class="step-number">1</span>
+            <strong>Text to Embeddings</strong>
+            <p>Convert text into numerical vectors (embeddings) using AI models like BERT, GPT, or Sentence Transformers</p>
+            <div class="code-block" style="font-size: 0.8em; margin-top: 10px;">
+"dog" → AI Model → [0.8, 0.2, 0.5, 0.1, 0.3, ...]
+"puppy" → AI Model → [0.75, 0.25, 0.48, 0.12, 0.32, ...]
+            </div>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">2</span>
+            <strong>Store in Vector Database</strong>
+            <p>Save all document embeddings in specialized databases (Pinecone, Weaviate, Milvus)</p>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">3</span>
+            <strong>Query Conversion</strong>
+            <p>User's search query is also converted to a vector using the same AI model</p>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">4</span>
+            <strong>Similarity Calculation</strong>
+            <p>Calculate cosine similarity between query vector and all document vectors</p>
+            <div class="code-block" style="font-size: 0.8em; margin-top: 10px;">
+Similarity Score = cosine_similarity(query_vector, document_vector)
+Result: 0.95 (95% similar) → High relevance!
+            </div>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">5</span>
+            <strong>Rank & Return</strong>
+            <p>Return documents sorted by similarity score - most relevant first</p>
+        </div>
+    </div>
+
+    <!-- Slide 6: Key Technologies -->
+    <div class="slide page-break">
+        <h1>Key Technologies Behind Semantic Search</h1>
+        
+        <div class="grid-2">
+            <div class="card" style="border-color: #3b82f6;">
+                <div class="icon">🤖</div>
+                <h3>AI/NLP Models</h3>
+                <ul>
+                    <li><strong>BERT</strong> - Bidirectional Encoder</li>
+                    <li><strong>GPT</strong> - Generative Pre-trained</li>
+                    <li><strong>Sentence-BERT</strong> - Optimized for sentences</li>
+                    <li><strong>Word2Vec</strong> - Word embeddings</li>
+                    <li><strong>OpenAI Embeddings</strong> - Commercial API</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Purpose:</strong> Convert text to meaningful vectors</p>
+            </div>
+
+            <div class="card" style="border-color: #8b5cf6;">
+                <div class="icon">💾</div>
+                <h3>Vector Databases</h3>
+                <ul>
+                    <li><strong>Pinecone</strong> - Managed service</li>
+                    <li><strong>Weaviate</strong> - Open source</li>
+                    <li><strong>Milvus</strong> - Highly scalable</li>
+                    <li><strong>Chroma</strong> - Lightweight</li>
+                    <li><strong>Qdrant</strong> - Fast & efficient</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Purpose:</strong> Store and search vectors efficiently</p>
+            </div>
+
+            <div class="card" style="border-color: #10b981;">
+                <div class="icon">📐</div>
+                <h3>Similarity Metrics</h3>
+                <ul>
+                    <li><strong>Cosine Similarity</strong> - Most common</li>
+                    <li><strong>Euclidean Distance</strong> - Geometric distance</li>
+                    <li><strong>Dot Product</strong> - Fast computation</li>
+                    <li><strong>Manhattan Distance</strong> - Grid-based</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Purpose:</strong> Measure how similar vectors are</p>
+            </div>
+
+            <div class="card" style="border-color: #f59e0b;">
+                <div class="icon">🔧</div>
+                <h3>Search Frameworks</h3>
+                <ul>
+                    <li><strong>Elasticsearch</strong> - Full-text + vectors</li>
+                    <li><strong>OpenSearch</strong> - AWS fork of ES</li>
+                    <li><strong>LangChain</strong> - LLM framework</li>
+                    <li><strong>Haystack</strong> - NLP pipelines</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Purpose:</strong> Complete search solutions</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Use Cases -->
+    <div class="slide page-break">
+        <h1>Real-World Use Cases</h1>
+        
+        <div class="grid-3">
+            <div class="card" style="border-color: #3b82f6;">
+                <div class="icon">🔍</div>
+                <h3>Search Engines</h3>
+                <p><strong>Google Search</strong></p>
+                <p>Uses BERT for understanding query intent</p>
+                <p style="margin-top: 10px; font-size: 0.9em;">Query: "2019 brazil traveler to usa need a visa"<br>Result: Understands travel direction</p>
+            </div>
+
+            <div class="card" style="border-color: #10b981;">
+                <div class="icon">📸</div>
+                <h3>Image Search</h3>
+                <p><strong>Google Photos</strong></p>
+                <p>Search "beach sunset" finds relevant photos without tags</p>
+                <p style="margin-top: 10px; font-size: 0.9em;">Converts images to vectors, matches query meaning</p>
+            </div>
+
+            <div class="card" style="border-color: #8b5cf6;">
+                <div class="icon">🛍️</div>
+                <h3>E-commerce</h3>
+                <p><strong>Amazon, Flipkart</strong></p>
+                <p>Search "summer dress for wedding" finds relevant products</p>
+                <p style="margin-top: 10px; font-size: 0.9em;">Understands occasion, season, style</p>
+            </div>
+
+            <div class="card" style="border-color: #ef4444;">
+                <div class="icon">🤖</div>
+                <h3>AI Chatbots</h3>
+                <p><strong>ChatGPT, Claude</strong></p>
+                <p>Retrieves relevant context from conversation history</p>
+                <p style="margin-top: 10px; font-size: 0.9em;">Remembers what you discussed earlier</p>
+            </div>
+
+            <div class="card" style="border-color: #f59e0b;">
+                <div class="icon">📚</div>
+                <h3>Document Search</h3>
+                <p><strong>Legal, Medical</strong></p>
+                <p>Find similar cases or research papers by concept</p>
+                <p style="margin-top: 10px; font-size: 0.9em;">Not limited to exact citation matching</p>
+            </div>
+
+            <div class="card" style="border-color: #06b6d4;">
+                <div class="icon">🎵</div>
+                <h3>Content Discovery</h3>
+                <p><strong>Spotify, Netflix</strong></p>
+                <p>"Find songs similar to X" or "Shows like Y"</p>
+                <p style="margin-top: 10px; font-size: 0.9em;">Based on content similarity, not just genre</p>
+            </div>
+
+            <div class="card" style="border-color: #ec4899;">
+                <div class="icon">💼</div>
+                <h3>Job Matching</h3>
+                <p><strong>LinkedIn, Indeed</strong></p>
+                <p>Match job descriptions with candidate profiles</p>
+                <p style="margin-top: 10px; font-size: 0.9em;">Understands skills beyond exact keywords</p>
+            </div>
+
+            <div class="card" style="border-color: #84cc16;">
+                <div class="icon">📰</div>
+                <h3>News Aggregation</h3>
+                <p><strong>Google News</strong></p>
+                <p>Groups similar stories from different sources</p>
+                <p style="margin-top: 10px; font-size: 0.9em;">Identifies same event, different wording</p>
+            </div>
+
+            <div class="card" style="border-color: #6366f1;">
+                <div class="icon">🏥</div>
+                <h3>Healthcare</h3>
+                <p><strong>Medical Diagnosis</strong></p>
+                <p>Match symptoms to conditions</p>
+                <p style="margin-top: 10px; font-size: 0.9em;">Understands symptom relationships</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Benefits & Challenges -->
+    <div class="slide page-break">
+        <h1>Benefits & Challenges</h1>
+        
+        <div class="grid-2">
+            <div>
+                <h2 style="color: #10b981;">✅ Benefits</h2>
+                <div class="card" style="border-color: #10b981;">
+                    <ul>
+                        <li><strong>Better User Experience</strong><br>Users can search naturally</li>
+                        <li><strong>Higher Accuracy</strong><br>Finds relevant results even with different words</li>
+                        <li><strong>Multilingual Support</strong><br>Works across languages</li>
+                        <li><strong>Context Awareness</strong><br>Understands ambiguous queries</li>
+                        <li><strong>Handles Typos</strong><br>Less sensitive to spelling errors</li>
+                        <li><strong>Intent Recognition</strong><br>Knows what user really wants</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h2 style="color: #ef4444;">⚠️ Challenges</h2>
+                <div class="card" style="border-color: #ef4444;">
+                    <ul>
+                        <li><strong>Computational Cost</strong><br>Requires powerful hardware/GPUs</li>
+                        <li><strong>Model Training</strong><br>Needs large datasets and expertise</li>
+                        <li><strong>Latency</strong><br>Vector calculations take time</li>
+                        <li><strong>Storage Requirements</strong><br>Vectors need significant space</li>
+                        <li><strong>Model Bias</strong><br>Can inherit training data biases</li>
+                        <li><strong>Explainability</strong><br>Hard to explain why results match</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Updated Comparison Table -->
+    <div class="slide page-break">
+        <h1>Detailed Feature Comparison</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Lexical</th>
+                    <th>Contextual</th>
+                    <th>Vector/Semantic</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Matching Method</strong></td>
+                    <td>Exact word/token</td>
+                    <td>User metadata</td>
+                    <td>Vector similarity</td>
+                </tr>
+                <tr>
+                    <td><strong>Query Understanding</strong></td>
+                    <td>Literal only</td>
+                    <td>User-aware</td>
+                    <td>Intent & meaning</td>
+                </tr>
+                <tr>
+                    <td><strong>Synonym Handling</strong></td>
+                    <td>❌ No</td>
+                    <td>⚠️ Optional</td>
+                    <td>✅ Yes</td>
+                </tr>
+                <tr>
+                    <td><strong>Natural Language</strong></td>
+                    <td>❌ Keywords only</td>
+                    <td>✅ Yes</td>
+                    <td>✅ Yes</td>
+                </tr>
+                <tr>
+                    <td><strong>Personalization</strong></td>
+                    <td>❌ No</td>
+                    <td>✅✅ Core feature</td>
+                    <td>⚠️ Possible</td>
+                </tr>
+                <tr>
+                    <td><strong>Technology Stack</strong></td>
+                    <td>Inverted index, BM25, TF-IDF</td>
+                    <td>User profiles, behavioral data</td>
+                    <td>Neural nets, vector DBs, embeddings</td>
+                </tr>
+                <tr>
+                    <td><strong>Speed</strong></td>
+                    <td>⚡⚡⚡ Very fast</td>
+                    <td>⚡⚡ Fast</td>
+                    <td>⚡ Moderate (improving)</td>
+                </tr>
+                <tr>
+                    <td><strong>Computational Cost</strong></td>
+                    <td>💰 Low</td>
+                    <td>💰💰 Medium</td>
+                    <td>💰💰💰 High</td>
+                </tr>
+                <tr>
+                    <td><strong>Accuracy</strong></td>
+                    <td>📊 Good for exact terms</td>
+                    <td>📊📊 Good for local/personal</td>
+                    <td>📊📊📊 Best for concepts</td>
+                </tr>
+                <tr>
+                    <td><strong>Independence</strong></td>
+                    <td>Query-only</td>
+                    <td>User-dependent</td>
+                    <td>Query-only (unless combined)</td>
+                </tr>
+                <tr>
+                    <td><strong>Scalability</strong></td>
+                    <td>✅ Excellent</td>
+                    <td>✅ Good</td>
+                    <td>⚠️ Challenging (requires optimization)</td>
+                </tr>
+                <tr>
+                    <td><strong>Best Use Case</strong></td>
+                    <td>Technical docs, code search</td>
+                    <td>Local business, e-commerce</td>
+                    <td>General knowledge, Q&A</td>
+                </tr>
+                <tr>
+                    <td><strong>Example Systems</strong></td>
+                    <td>Traditional search engines</td>
+                    <td>Google Maps, Amazon filters</td>
+                    <td>ChatGPT, Google BERT</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="key-insight">
+            💡 Best Practice: Hybrid approach - Lexical for speed, Semantic for understanding, Contextual for personalization!
+        </div>
+    </div>
+
+    <!-- Slide 10: Demo Code Part 1 -->
+    <div class="slide page-break">
+        <h1>Demo Code: Basic Semantic Search (Part 1)</h1>
+        <p><strong>File:</strong> demo_semantic_search_basic.py</p>
+        
+        <div class="code-block" style="font-size: 0.65em;">
+# Install: pip install sentence-transformers scikit-learn numpy
+
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
+
+# Load pre-trained model
+print("Loading AI model...")
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+# Sample documents
+documents = [
+    "The dog is playing in the park",
+    "A puppy is running on the grass",
+    "The cat is sleeping on the couch",
+    "Machine learning algorithms are powerful",
+    "Dogs are loyal pets and great companions",
+    "Python is a programming language",
+    "The weather is sunny today"
+]
+
+print("\n📚 Documents:")
+for i, doc in enumerate(documents, 1):
+    print(f"{i}. {doc}")
+
+# Convert documents to embeddings
+print("\n🔄 Converting documents to vectors...")
+doc_embeddings = model.encode(documents)
+print(f"✅ Created {len(doc_embeddings)} vectors of {len(doc_embeddings[0])} dimensions each")
+
+# User query
+query = "puppy playing outside"
+print(f"\n🔍 Search Query: '{query}'")
+
+# Convert query to embedding
+query_embedding = model.encode([query])
+
+# Calculate similarities
+similarities = cosine_similarity(query_embedding, doc_embeddings)[0]
+
+# Get top 3 results
+top_indices = np.argsort(similarities)[::-1][:3]
+
+print("\n📊 Top 3 Results:\n")
+for rank, idx in enumerate(top_indices, 1):
+    print(f"{rank}. Similarity: {similarities[idx]:.2%}")
+    print(f"   Document: {documents[idx]}\n")
+        </div>
+        
+        <p><strong>Run:</strong> <code>python demo_semantic_search_basic.py</code></p>
+    </div>
+
+    <!-- Slide 11: Demo Code Part 2 -->
+    <div class="slide page-break">
+        <h1>Demo Code: Keyword vs Semantic Comparison</h1>
+        <p><strong>File:</strong> demo_keyword_vs_semantic.py</p>
+        
+        <div class="code-block" style="font-size: 0.6em;">
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+import re
+
+# Sample documents
+documents = [
+    "How to fix a broken car engine",
+    "Automobile repair and maintenance guide",
+    "Vehicle troubleshooting manual",
+    "Recipe for chocolate cake",
+    "Best practices for car servicing"
+]
+
+print("=" * 70)
+print("KEYWORD SEARCH vs SEMANTIC SEARCH COMPARISON")
+print("=" * 70)
+
+query = "car repair"
+print(f"\n🔍 Query: '{query}'\n")
+
+# ============= KEYWORD SEARCH =============
+print("❌ KEYWORD SEARCH (Simple text matching):")
+print("-" * 70)
+keyword_results = []
+for i, doc in enumerate(documents):
+    # Simple keyword matching
+    if query.lower() in doc.lower() or any(word in doc.lower() for word in query.lower().split()):
+        keyword_results.append((i, doc))
+
+if keyword_results:
+    for idx, doc in keyword_results:
+        print(f"✓ Found: {doc}")
+else:
+    print("No results found")
+
+print(f"\nKeyword Search Results: {len(keyword_results)} documents\n")
+
+# ============= SEMANTIC SEARCH =============
+print("✅ SEMANTIC SEARCH (Meaning-based):")
+print("-" * 70)
+
+model = SentenceTransformer('all-MiniLM-L6-v2')
+doc_embeddings = model.encode(documents)
+query_embedding = model.encode([query])
+similarities = cosine_similarity(query_embedding, doc_embeddings)[0]
+
+# Sort by similarity
+sorted_indices = similarities.argsort()[::-1]
+
+for rank, idx in enumerate(sorted_indices, 1):
+    if similarities[idx] > 0.3:  # Threshold
+        print(f"{rank}. Similarity: {similarities[idx]:.2%}")
+        print(f"   Document: {documents[idx]}\n")
+
+print("=" * 70)
+print("\n💡 INSIGHT:")
+print("Semantic search found 'automobile repair' and 'vehicle troubleshooting'")
+print("even though they don't contain the exact words 'car repair'!")
+print("=" * 70)
+        </div>
+        
+        <p><strong>Run:</strong> <code>python demo_keyword_vs_semantic.py</code></p>
+    </div>
+
+    <!-- Slide 12: Demo Code Part 3 -->
+    <div class="slide page-break">
+        <h1>Demo Code: Building a Simple Search Engine</h1>
+        <p><strong>File:</strong> demo_semantic_search_engine.py</p>
+        
+        <div class="code-block" style="font-size: 0.55em;">
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
+
+class SemanticSearchEngine:
+    def __init__(self):
+        print("🚀 Initializing Semantic Search Engine...")
+        self.model = SentenceTransformer('all-MiniLM-L6-v2')
+        self.documents = []
+        self.embeddings = None
+        
+    def add_documents(self, docs):
+        """Add documents to search index"""
+        self.documents = docs
+        print(f"📚 Indexing {len(docs)} documents...")
+        self.embeddings = self.model.encode(docs)
+        print("✅ Indexing complete!")
+        
+    def search(self, query, top_k=3):
+        """Search for most similar documents"""
+        print(f"\n🔍 Searching for: '{query}'")
+        
+        # Convert query to embedding
+        query_embedding = self.model.encode([query])
+        
+        # Calculate similarities
+        similarities = cosine_similarity(query_embedding, self.embeddings)[0]
+        
+        # Get top k results
+        top_indices = np.argsort(similarities)[::-1][:top_k]
+        
+        results = []
+        for idx in top_indices:
+            results.append({
+                'document': self.documents[idx],
+                'score': similarities[idx]
+            })
+        
+        return results
+
+# ============= USAGE EXAMPLE =============
+# Create search engine
+engine = SemanticSearchEngine()
+
+# Add documents (imagine these are product descriptions)
+products = [
+    "Wireless Bluetooth headphones with noise cancellation and 30-hour battery life",
+    "Gaming laptop with RTX 4060 graphics card and 16GB RAM for developers",
+    "Ergonomic office chair with lumbar support and adjustable height",
+    "Smartphone with 5G connectivity and 108MP camera for photography",
+    "Smart watch with fitness tracking and heart rate monitor",
+    "Mechanical keyboard with RGB lighting for gaming and programming",
+    "Portable SSD with 1TB storage and USB-C connection",
+    "4K webcam for video conferencing and streaming",
+]
+
+engine.add_documents(products)
+
+# Test different queries
+queries = [
+    "headphones for music",
+    "laptop for coding",
+    "chair for back pain",
+    "phone with good camera"
+]
+
+for query in queries:
+    results = engine.search(query, top_k=2)
+    
+    print(f"\n📊 Results:")
+    for i, result in enumerate(results, 1):
+        print(f"\n{i}. Score: {result['score']:.2%}")
+        print(f"   Product: {result['document']}")
+    print("\n" + "=" * 70)
+        </div>
+        
+        <p><strong>Run:</strong> <code>python demo_semantic_search_engine.py</code></p>
+    </div>
+
+    <!-- Slide 13: Demo Code Part 4 -->
+    <div class="slide page-break">
+        <h1>Demo Code: Multilingual Semantic Search</h1>
+        <p><strong>File:</strong> demo_multilingual_search.py</p>
+        
+        <div class="code-block" style="font-size: 0.6em;">
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+
+print("🌍 MULTILINGUAL SEMANTIC SEARCH DEMO")
+print("=" * 70)
+
+# Load multilingual model
+model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
+
+# Documents in different languages
+documents = [
+    "The cat is sleeping on the sofa",           # English
+    "El gato está durmiendo en el sofá",         # Spanish
+    "Le chat dort sur le canapé",                # French
+    "Die Katze schläft auf dem Sofa",            # German
+    "बिल्ली सोफे पर सो रही है",                  # Hindi
+    "The dog is playing in the garden",          # English
+    "Python programming tutorial for beginners"   # English
+]
+
+languages = ["English", "Spanish", "French", "German", "Hindi", "English", "English"]
+
+print("\n📚 Documents in Multiple Languages:")
+for i, (doc, lang) in enumerate(zip(documents, languages), 1):
+    print(f"{i}. [{lang}] {doc}")
+
+# Convert to embeddings
+doc_embeddings = model.encode(documents)
+
+# Query in English
+query = "cat sleeping"
+print(f"\n🔍 Query (English): '{query}'")
+
+query_embedding = model.encode([query])
+similarities = cosine_similarity(query_embedding, doc_embeddings)[0]
+
+# Sort by similarity
+sorted_indices = similarities.argsort()[::-1]
+
+print("\n📊 Results (Ranked by Relevance):\n")
+for rank, idx in enumerate(sorted_indices[:5], 1):
+    print(f"{rank}. Similarity: {similarities[idx]:.2%}")
+    print(f"   Language: {languages[idx]}")
+    print(f"   Document: {documents[idx]}\n")
+
+print("=" * 70)
+print("\n💡 AMAZING: The model understood that all the cat/sleeping")
+print("documents are similar, even though they're in different languages!")
+print("=" * 70)
+        </div>
+        
+        <p><strong>Run:</strong> <code>python demo_multilingual_search.py</code></p>
+    </div>
+
+    <!-- Slide 14: Implementation Guide -->
+    <div class="slide page-break">
+        <h1>Building Your Own Semantic Search</h1>
+        <h2>Step-by-Step Implementation Guide</h2>
+        
+        <div class="step-box">
+            <span class="step-number">1</span>
+            <strong>Choose an Embedding Model</strong>
+            <ul style="margin-left: 45px; margin-top: 8px;">
+                <li><strong>sentence-transformers</strong>: Easy to use, many pre-trained models</li>
+                <li><strong>OpenAI Embeddings</strong>: High quality, requires API key</li>
+                <li><strong>Cohere</strong>: Good for production, paid service</li>
+            </ul>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">2</span>
+            <strong>Select a Vector Database</strong>
+            <ul style="margin-left: 45px; margin-top: 8px;">
+                <li><strong>Small scale:</strong> FAISS, Chroma (local)</li>
+                <li><strong>Medium scale:</strong> Weaviate, Qdrant (self-hosted)</li>
+                <li><strong>Large scale:</strong> Pinecone, Milvus (managed/cloud)</li>
+            </ul>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">3</span>
+            <strong>Prepare Your Data</strong>
+            <ul style="margin-left: 45px; margin-top: 8px;">
+                <li>Clean text: Remove HTML, special characters</li>
+                <li>Chunk large documents into smaller pieces</li>
+                <li>Store metadata (title, date, source)</li>
+            </ul>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">4</span>
+            <strong>Generate Embeddings</strong>
+            <div class="code-block" style="font-size: 0.7em; margin: 10px 0 0 45px;">
+embeddings = model.encode(documents)
+            </div>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">5</span>
+            <strong>Index & Store</strong>
+            <ul style="margin-left: 45px; margin-top: 8px;">
+                <li>Store vectors in database with document IDs</li>
+                <li>Create indexes for fast retrieval</li>
+            </ul>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">6</span>
+            <strong>Query & Retrieve</strong>
+            <ul style="margin-left: 45px; margin-top: 8px;">
+                <li>Convert query to vector</li>
+                <li>Search database for similar vectors</li>
+                <li>Return top K results with scores</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 15: Best Practices -->
+    <div class="slide page-break">
+        <h1>Best Practices & Tips</h1>
+        
+        <div class="grid-2">
+            <div>
+                <h2>✅ Do's</h2>
+                <div class="card" style="border-color: #10b981;">
+                    <ul>
+                        <li><strong>Use appropriate models</strong><br>Choose model based on your language and domain</li>
+                        <li><strong>Chunk strategically</strong><br>Break large docs into 200-500 word chunks</li>
+                        <li><strong>Hybrid search</strong><br>Combine keyword + semantic for best results</li>
+                        <li><strong>Cache embeddings</strong><br>Don't re-compute embeddings unnecessarily</li>
+                        <li><strong>Monitor performance</strong><br>Track query latency and accuracy</li>
+                        <li><strong>Update regularly</strong><br>Re-index when content changes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h2>❌ Don'ts</h2>
+                <div class="card" style="border-color: #ef4444;">
+                    <ul>
+                        <li><strong>Don't ignore preprocessing</strong><br>Clean data improves results significantly</li>
+                        <li><strong>Don't use generic models</strong><br>For specialized domains, fine-tune models</li>
+                        <li><strong>Don't forget metadata</strong><br>Store context like dates, categories</li>
+                        <li><strong>Don't skip testing</strong><br>Test with real user queries</li>
+                        <li><strong>Don't ignore edge cases</strong><br>Handle typos, empty queries, etc.</li>
+                        <li><strong>Don't hardcode thresholds</strong><br>Make similarity thresholds configurable</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="key-insight">
+            💡 Pro Tip: Start simple with sentence-transformers, then scale to vector databases when needed
+        </div>
+    </div>
+
+    <!-- Slide 16: Performance Optimization -->
+    <div class="slide page-break">
+        <h1>Performance Optimization</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Challenge</th>
+                    <th>Solution</th>
+                    <th>Impact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Slow query time</strong></td>
+                    <td>Use approximate nearest neighbor (ANN) algorithms like HNSW</td>
+                    <td>10-100x faster</td>
+                </tr>
+                <tr>
+                    <td><strong>High memory usage</strong></td>
+                    <td>Use quantization to reduce vector dimensions</td>
+                    <td>75% less memory</td>
+                </tr>
+                <tr>
+                    <td><strong>Expensive embeddings</strong></td>
+                    <td>Batch process, cache results, use smaller models</td>
+                    <td>50-90% cost reduction</td>
+                </tr>
+                <tr>
+                    <td><strong>Large index size</strong></td>
+                    <td>Use disk-based indexes, compression techniques</td>
+                    <td>60% smaller</td>
+                </tr>
+                <tr>
+                    <td><strong>Cold start latency</strong></td>
+                    <td>Pre-warm model, keep in memory, use CDN</td>
+                    <td>90% faster first query</td>
+                </tr>
+                <tr>
+                    <td><strong>Scaling issues</strong></td>
+                    <td>Shard database, use distributed vector DB</td>
+                    <td>Linear scaling</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 style="margin-top: 25px;">Recommended Architecture for Production</h2>
+        <div class="code-block" style="font-size: 0.75em;">
+┌─────────────┐
+│   User      │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────────────────────────┐
+│  API Layer (FastAPI/Flask)          │
+│  - Query validation                 │
+│  - Rate limiting                    │
+│  - Caching (Redis)                  │
+└──────┬──────────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────────┐
+│  Embedding Service                  │
+│  - Model: sentence-transformers     │
+│  - Batching for efficiency          │
+└──────┬──────────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────────┐
+│  Vector Database (Pinecone/Weaviate)│
+│  - ANN index (HNSW)                 │
+│  - Horizontal scaling               │
+└──────┬──────────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────────┐
+│  Post-processing                    │
+│  - Re-ranking                       │
+│  - Filtering by metadata            │
+└─────────────────────────────────────┘
+        </div>
+    </div>
+
+    <!-- Slide 17: Tools & Resources -->
+    <div class="slide page-break">
+        <h1>Tools & Resources</h1>
+        
+        <h2>🔧 Essential Libraries</h2>
+        <div class="code-block" style="font-size: 0.8em;">
+# Install these packages
+pip install sentence-transformers
+pip install openai  # For OpenAI embeddings
+pip install pinecone-client  # For Pinecone vector DB
+pip install weaviate-client  # For Weaviate
+pip install chromadb  # For local vector DB
+pip install faiss-cpu  # Facebook's similarity search
+pip install langchain  # LLM framework with semantic search
+        </div>
+
+        <h2>📚 Learning Resources</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Documentation</h3>
+                <ul>
+                    <li><strong>Sentence-BERT:</strong> sbert.net</li>
+                    <li><strong>Pinecone:</strong> docs.pinecone.io</li>
+                    <li><strong>Weaviate:</strong> weaviate.io/docs</li>
+                    <li><strong>LangChain:</strong> python.langchain.com</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Tutorials</h3>
+                <ul>
+                    <li>Hugging Face NLP Course</li>
+                    <li>Pinecone Learning Center</li>
+                    <li>Google's BERT paper</li>
+                    <li>OpenAI Embeddings Guide</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🎯 Try These Services</h2>
+        <div class="grid-3">
+            <div class="card" style="border-color: #3b82f6;">
+                <h3>Pinecone</h3>
+                <p>Managed vector DB</p>
+                <p><strong>Free tier:</strong> 1 index, 100K vectors</p>
+            </div>
+
+            <div class="card" style="border-color: #10b981;">
+                <h3>Weaviate Cloud</h3>
+                <p>Open-source vector DB</p>
+                <p><strong>Free tier:</strong> 14-day sandbox</p>
+            </div>
+
+            <div class="card" style="border-color: #8b5cf6;">
+                <h3>OpenAI</h3>
+                <p>High-quality embeddings</p>
+                <p><strong>Pay per use:</strong> $0.0001/1K tokens</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 18: Future Trends -->
+    <div class="slide page-break">
+        <h1>Future of Semantic Search</h1>
+        
+        <div class="grid-2">
+            <div class="card" style="border-color: #3b82f6;">
+                <div class="icon">🚀</div>
+                <h3>Multimodal Search</h3>
+                <p>Search across text, images, video, and audio simultaneously</p>
+                <p style="margin-top: 10px; font-size: 0.9em;"><strong>Example:</strong> "Find images of people laughing in videos about comedy" - searches text, audio, and visual content</p>
+            </div>
+
+            <div class="card" style="border-color: #10b981;">
+                <div class="icon">🧠</div>
+                <h3>Contextual Search</h3>
+                <p>Understanding user context, history, and preferences</p>
+                <p style="margin-top: 10px; font-size: 0.9em;"><strong>Example:</strong> Same query returns different results based on your location, time, past searches</p>
+            </div>
+
+            <div class="card" style="border-color: #8b5cf6;">
+                <div class="icon">🗣️</div>
+                <h3>Conversational Search</h3>
+                <p>Search through natural dialogue, follow-up questions</p>
+                <p style="margin-top: 10px; font-size: 0.9em;"><strong>Example:</strong> ChatGPT-style search where you refine results through conversation</p>
+            </div>
+
+            <div class="card" style="border-color: #f59e0b;">
+                <div class="icon">⚡</div>
+                <h3>Real-time Updates</h3>
+                <p>Instantly searchable new content without re-indexing</p>
+                <p style="margin-top: 10px; font-size: 0.9em;"><strong>Example:</strong> Breaking news appears in search results within seconds</p>
+            </div>
+
+            <div class="card" style="border-color: #ef4444;">
+                <div class="icon">🎯</div>
+                <h3>Personalized Embeddings</h3>
+                <p>Custom models trained on your domain-specific data</p>
+                <p style="margin-top: 10px; font-size: 0.9em;"><strong>Example:</strong> Medical search using models trained on medical literature</p>
+            </div>
+
+            <div class="card" style="border-color: #06b6d4;">
+                <div class="icon">🔒</div>
+                <h3>Privacy-Preserving Search</h3>
+                <p>Semantic search without sending data to cloud</p>
+                <p style="margin-top: 10px; font-size: 0.9em;"><strong>Example:</strong> On-device models for private document search</p>
+            </div>
+        </div>
+
+        <div class="key-insight">
+            💡 Prediction: By 2025, 80% of enterprise search will use semantic/AI-powered search
+        </div>
+    </div>
+
+    <!-- Slide 19: Key Takeaways -->
+    <div class="slide page-break">
+        <h1>Key Takeaways</h1>
+        
+        <div class="step-box" style="border-color: #3b82f6;">
+            <span class="step-number">1</span>
+            <strong>Semantic Search = Understanding Meaning</strong>
+            <p>Not just matching words, but understanding intent and context</p>
+        </div>
+
+        <div class="step-box" style="border-color: #10b981;">
+            <span class="step-number">2</span>
+            <strong>Powered by AI & Vector Databases</strong>
+            <p>Uses NLP models to convert text to vectors, then finds similar vectors</p>
+        </div>
+
+        <div class="step-box" style="border-color: #8b5cf6;">
+            <span class="step-number">3</span>
+            <strong>Better User Experience</strong>
+            <p>Users can search naturally, get relevant results even with different words</p>
+        </div>
+
+        <div class="step-box" style="border-color: #f59e0b;">
+            <span class="step-number">4</span>
+            <strong>Widely Adopted</strong>
+            <p>Google, Amazon, Netflix, Spotify all use semantic search</p>
+        </div>
+
+        <div class="step-box" style="border-color: #ef4444;">
+            <span class="step-number">5</span>
+            <strong>Easy to Implement</strong>
+            <p>Start with sentence-transformers, scale to vector databases</p>
+        </div>
+
+        <div class="step-box" style="border-color: #06b6d4;">
+            <span class="step-number">6</span>
+            <strong>Hybrid Approach Works Best</strong>
+            <p>Combine keyword search (speed) + semantic search (accuracy)</p>
+        </div>
+
+        <div class="key-insight">
+            🎯 Bottom Line: Semantic search is no longer optional - it's essential for modern applications!
+        </div>
+    </div>
+
+    <!-- Slide 20: Summary & Next Steps -->
+    <div class="slide page-break">
+        <h1>Summary & Next Steps</h1>
+        
+        <h2>What We Covered</h2>
+        <ul style="font-size: 1.1em; line-height: 2;">
+            <li>✅ What semantic search is and why it matters</li>
+            <li>✅ How it differs from keyword search</li>
+            <li>✅ Key technologies: AI models, vector databases, similarity metrics</li>
+            <li>✅ Real-world use cases across industries</li>
+            <li>✅ Hands-on demo code examples</li>
+            <li>✅ Implementation guide and best practices</li>
+            <li>✅ Performance optimization techniques</li>
+        </ul>
+
+        <h2 style="margin-top: 30px;">🚀 Next Steps for You</h2>
+        
+        <div class="grid-2" style="margin-top: 20px;">
+            <div class="card" style="border-color: #3b82f6;">
+                <h3>Beginners</h3>
+                <ol>
+                    <li>Run the demo codes provided</li>
+                    <li>Experiment with different queries</li>
+                    <li>Try different models</li>
+                    <li>Build a simple search for your blog/notes</li>
+                </ol>
+            </div>
+
+            <div class="card" style="border-color: #10b981;">
+                <h3>Advanced</h3>
+                <ol>
+                    <li>Integrate vector database (Pinecone/Weaviate)</li>
+                    <li>Fine-tune models on domain data</li>
+                    <li>Build production API</li>
+                    <li>Implement hybrid search system</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="key-insight" style="margin-top: 30px;">
+            💡 Remember: The best way to learn is by building! Start with a small project and iterate.
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; font-size: 1.3em;">
+            <strong>Questions?</strong> 🙋‍♂️🙋‍♀️
+        </div>
+    </div>
+
+    <!-- Slide 21: Installation Guide -->
+    <div class="slide page-break">
+        <h1>Quick Start Installation Guide</h1>
+        
+        <h2>Prerequisites</h2>
+        <div class="code-block">
+# Check Python version (3.8+ required)
+python --version
+
+# Upgrade pip
+pip install --upgrade pip
+        </div>
+
+        <h2>Install Required Packages</h2>
+        <div class="code-block">
+# Core packages
+pip install sentence-transformers
+pip install scikit-learn
+pip install numpy
+
+# Optional: Vector databases
+pip install pinecone-client  # For Pinecone
+pip install chromadb          # For local ChromaDB
+pip install weaviate-client   # For Weaviate
+
+# Optional: Advanced features
+pip install langchain         # LLM framework
+pip install openai            # OpenAI API
+        </div>
+
+        <h2>Verify Installation</h2>
+        <div class="code-block">
+python -c "from sentence_transformers import SentenceTransformer; print('✅ Installation successful!')"
+        </div>
+
+        <h2>Download Pre-trained Model (First Run)</h2>
+        <div class="code-block">
+# This will download ~80MB model on first run
+from sentence_transformers import SentenceTransformer
+model = SentenceTransformer('all-MiniLM-L6-v2')
+print("Model ready!")
+        </div>
+
+        <div class="key-insight">
+            💡 All demo files are ready to run after installing these packages!
+        </div>
+    </div>
+
+    <!-- Slide 22: Troubleshooting -->
+    <div class="slide page-break">
+        <h1>Common Issues & Solutions</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Problem</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ImportError: No module named 'sentence_transformers'</strong></td>
+                    <td>Run: <code>pip install sentence-transformers</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Model download fails</strong></td>
+                    <td>Check internet connection, try: <code>model = SentenceTransformer('all-MiniLM-L6-v2', cache_folder='./models')</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Out of memory error</strong></td>
+                    <td>Use smaller model: <code>'paraphrase-MiniLM-L3-v2'</code> or process in batches</td>
+                </tr>
+                <tr>
+                    <td><strong>Slow performance</strong></td>
+                    <td>Use GPU if available, reduce batch size, use smaller model</td>
+                </tr>
+                <tr>
+                    <td><strong>Results not relevant</strong></td>
+                    <td>Try different models, adjust similarity threshold, use domain-specific model</td>
+                </tr>
+                <tr>
+                    <td><strong>Python version error</strong></td>
+                    <td>Upgrade to Python 3.8+: <code>python --version</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 style="margin-top: 25px;">Performance Tips</h2>
+        <ul style="font-size: 1.05em;">
+            <li><strong>Use GPU:</strong> 10-50x faster with CUDA-enabled GPU</li>
+            <li><strong>Batch processing:</strong> Encode multiple texts at once</li>
+            <li><strong>Cache embeddings:</strong> Save computed vectors to disk</li>
+            <li><strong>Choose right model:</strong> Smaller = faster, larger = more accurate</li>
+        </ul>
+    </div>
+
+</body>
+</html>
