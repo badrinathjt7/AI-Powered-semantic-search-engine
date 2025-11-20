@@ -19,7 +19,11 @@ This project showcases how modern AI systems like **Google, ChatGPT, Netflix, Sp
 
 ### ⭐ Home Screen
 
-<img width="1920" height="816" alt="image" src="https://github.com/user-attachments/assets/19722c18-f20c-4fa3-8bee-158d5a7e14a4" />
+<p align="center">
+  <img width="1920" height="816" src="https://github.com/user-attachments/assets/19722c18-f20c-4fa3-8bee-158d5a7e14a4" />
+  <br>
+  <sub><b>Home Screen UI</b></sub>
+</p>
 
 ---
 
@@ -29,9 +33,17 @@ This project showcases how modern AI systems like **Google, ChatGPT, Netflix, Sp
 
 Upload multiple documents at once.
 
-<img width="413" height="543" alt="image" src="https://github.com/user-attachments/assets/10377a86-8310-465d-94b7-73bb6bb219ca" />
+<p align="center">
+  <img width="413" height="543" src="https://github.com/user-attachments/assets/10377a86-8310-465d-94b7-73bb6bb219ca" />
+  <br>
+  <sub><b>File Upload Section (Left Sidebar)</b></sub>
+</p>
 
-<img width="415" height="474" alt="image" src="https://github.com/user-attachments/assets/bd258078-382f-43a6-98e2-a5099ad31e09" />
+<p align="center">
+  <img width="415" height="474" src="https://github.com/user-attachments/assets/bd258078-382f-43a6-98e2-a5099ad31e09" />
+  <br>
+  <sub><b>Uploaded Files Listed</b></sub>
+</p>
 
 ---
 
