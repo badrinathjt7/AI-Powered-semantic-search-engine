@@ -221,7 +221,7 @@ wifi keeps disconnecting
 
 “wifi troubleshooting steps”
 
-🧠 Architecture Diagram
+**🧠 Architecture Diagram**
 
 ![Project Architecture](assets/architecture.png)
 
