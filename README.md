@@ -1,139 +1,193 @@
-# AI-Powered-semantic-search-engine
-AI-powered Semantic Search Engine using Embeddings, FAISS, Streamlit, PDF/TXT Extraction, and Visual Relevance Indicators.
-# 🔍 Semantic Search Engine (Advanced)
+# 🔍 Semantic Search Engine (Advanced AI-Based Document Search)
 
-A fully interactive AI-powered semantic search engine built using:
-- **Sentence Transformers**
-- **FAISS Vector Database**
-- **Streamlit UI**
-- **PDF & TXT Extraction**
-- **Interactive Visual Relevance Indicators**
+A fully interactive **semantic search engine** built with:
+- 🧠 **Sentence Transformers**
+  
+- 🚀 **FAISS Vector Database**
 
-This project demonstrates how modern search systems like Google, ChatGPT, Netflix, and Amazon retrieve relevant information using *meaning*, not keywords.
+- 🖥️ **Streamlit UI**
 
----
+- 📄 **PDF & TXT Extraction**
 
-## ⭐ Features
+- 📊 **Visual Relevance Indicators (Progress Bar, Gauge, Tags)**
 
-### 🔹 Upload & Search Documents
-Supports:
-- PDF files  
-- TXT files  
-
-### 🔹 Automatic Text Extraction
-Extracts:
-- First page of PDFs  
-- Full text of TXT files  
-
-### 🔹 Vector Embeddings
-Uses:
-all-MiniLM-L6-v2 to convert text into high-dimensional meaning vectors.
-
-### 🔹 FAISS Vector Store
-Ultra-fast semantic search using FAISS IndexFlatL2.
-
-### 🔹 Visualization Layer
-Each result displays:
-- Horizontal relevance bar  
-- Color-coded relevance tag  
-- Circular gauge meter (Plotly)  
-- Document preview snippet  
-
-### 🔹 Clean UI
-Built with Streamlit for real-time interactive usage.
+This project showcases how modern AI systems like **Google, ChatGPT, Netflix, Spotify, and Amazon** retrieve information based on **meaning**, not just keywords.
 
 ---
 
-## 📂 Project Structure
+# 🖼️ UI Overview
+
+### ⭐ Home Screen
+![Home UI](assets/ui_home.png)
+
+---
+
+# ✨ Features
+
+### 📁 1. Multi-File Upload (PDF + TXT)
+Upload multiple documents at once.
+
+![Upload Files](assets/upload_section.png)
+
+---
+
+### 🔄 2. Embeddings + FAISS Index Generation
+One-click indexing with MiniLM model + FAISS vector store.
+
+![Build Index](assets/build_index.png)
+
+---
+
+### 🔎 3. True Semantic Search
+Search using natural language, not keywords.
+
+![Search Results](assets/search_results.png)
+
+---
+
+### 📊 4. Relevance Visualizations
+Every result includes:
+
+#### ✔ Horizontal Relevance Bar  
+#### ✔ Color-Coded Relevance Tag  
+#### ✔ Circular Gauge Meter (Plotly)  
+
+![Relevance Visualizations](assets/relevance_visualization.png)
+
+---
+
+### 📄 5. PDF & TXT Preview
+Extracts readable text and shows preview snippets.
+
+![Preview PDF](assets/preview_pdf.png)  
+![Preview TXT](assets/preview_txt.png)
+
+---
+
+### 🔁 6. FAST FAISS Search
+Real-time similarity search using Meta’s FAISS library.
+
+---
+
+# 📂 Project Structure
 
 semantic-search-pro/
-
 │── app.py
-
 │── requirements.txt
-
+│── README.md
 │── modules/
-
 │ ├── text_loader.py
-
 │ ├── embedder.py
-
 │ ├── vector_db.py
-
 │ └── utils.py
-
 │── data/
-
-│ ├── uploads/
-
+│ └── uploads/
 │ ├── car_repair_tips.txt
-
 │ ├── music_guide.pdf
-
 │ ├── sample_semantic_search.pdf
-
 │ ├── sampleeee.txt
+│── assets/
+│ ├── ui_home.png
+│ ├── upload_section.png
+│ ├── build_index.png
+│ ├── search_results.png
+│ ├── preview_pdf.png
+│ ├── preview_txt.png
+│ ├── relevance_visualization.png
+│ └── project_architecture.png
 
-│── vector_store/ (auto-created after indexing)
-
+yaml
+Copy code
 
 ---
 
-## 🚀 How to Run
+# 🚀 How to Run the Project Locally
 
-### Install Requirements
+### 🔧 1. Install dependencies
 ```bash
 pip install -r requirements.txt
-Start the App
-
+🟢 2. Start the Streamlit App
 bash
-
+Copy code
 streamlit run app.py
+📥 3. Upload documents
+Supported formats:
 
-Steps to Use
+PDF (*.pdf)
 
-Upload multiple PDF/TXT files
+Text (*.txt)
 
-Click Build Index
+📦 4. Click “Build Index”
+This:
 
-Type a natural language query
+Extracts text
 
-Get semantically ranked results with beautiful visualizations
+Embeds documents
 
+Creates FAISS vector index
+
+🔍 5. Enter any natural-language query
+Example:
+
+pgsql
+Copy code
+why is my car engine overheating?
+how to write a melody?
+fix laptop screen flickering
+wifi keeps disconnecting
 🧪 Example Queries
+🚗 Car Issue Queries
+“car ac not cooling”
 
-Car Issues
+“brakes making grinding noise”
 
-"why is my car engine overheating"
+“car won’t start what to check”
 
-"car ac is not cooling"
+🎵 Music Queries
+“how to create melody”
 
-"my car won't start what to check"
+“basics of harmony”
 
-Music
+“what is rhythm in music”
 
-"how to write a melody"
+💻 Technical Issues
+“laptop screen broken”
 
-"what is rhythm in music"
+“slow pc performance”
 
-Tech Issues
+“wifi troubleshooting steps”
 
-"fix laptop screen"
+🧠 Architecture Diagram
 
-"improve pc performance"
+![Project Architecture](assets/architecture.png)
 
-"wifi troubleshooting"
+🛠️ Technologies Used
+Python 3.12
 
-📈 Future Enhancements
+Streamlit
 
-Cosine similarity indexing
+Sentence-Transformers
 
-OCR for scanned PDFs
+FAISS (Vector Similarity Search)
 
-RAG + Chatbot mode
+PyPDF / pypdf
 
-Cloud deployment (HuggingFace/Streamlit Cloud)
+Plotly
+
+NumPy
+
+🔮 Future Enhancements
+Convert L2 distance → cosine similarity for real similarity percentages
+
+Add support for scanned PDFs via OCR
+
+Add RAG-style chatbot
+
+Deploy to Streamlit Cloud
+
+Add tagging and document categorization
 
 👨‍💻 Author
-
-Badrinath
+Your Name
+Semantic Search Engineer
+(Replace this section with your GitHub/LinkedIn)
