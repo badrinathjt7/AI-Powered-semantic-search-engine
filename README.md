@@ -39,7 +39,8 @@ Upload multiple documents at once.
 
 One-click indexing with MiniLM model + FAISS vector store.
 
-![Build Index](assets/build_index.png)
+<img width="1362" height="478" alt="image" src="https://github.com/user-attachments/assets/c20d0142-8a01-441a-8d50-6d00c010e241" />
+
 
 ---
 
@@ -47,7 +48,10 @@ One-click indexing with MiniLM model + FAISS vector store.
 
 Search using natural language, not keywords.
 
-![Search Results](assets/search_results.png)
+Enter your query -> press 'search' button
+
+<img width="1388" height="424" alt="image" src="https://github.com/user-attachments/assets/cfb62940-5679-489b-a574-1ddc64c7dee9" />
+
 
 ---
 
@@ -57,11 +61,18 @@ Every result includes:
 
 #### ✔ Horizontal Relevance Bar  
 
+<img width="1312" height="356" alt="image" src="https://github.com/user-attachments/assets/e3327e5a-1854-4807-99c3-6a4f158c1faf" />
+
+
 #### ✔ Color-Coded Relevance Tag  
+
+<img width="297" height="84" alt="image" src="https://github.com/user-attachments/assets/3e2152e8-26be-4eb5-a346-dd4f2a07a863" />
+
 
 #### ✔ Circular Gauge Meter (Plotly)  
 
-![Relevance Visualizations](assets/relevance_visualization.png)
+<img width="1306" height="550" alt="image" src="https://github.com/user-attachments/assets/33e5c88b-6aca-4702-a291-f092d456baac" />
+
 
 ---
 
@@ -69,10 +80,14 @@ Every result includes:
 
 Extracts readable text and shows preview snippets.
 
+**[Preview music_guide.pdf]**
 
-![Preview PDF](assets/preview_pdf.png)  
+<img width="1272" height="249" alt="image" src="https://github.com/user-attachments/assets/03f49796-79e0-44e8-b2d7-589308d526e3" />
 
-![Preview TXT](assets/preview_txt.png)
+**[Preview sampleeee.txt]**
+
+<img width="1242" height="206" alt="image" src="https://github.com/user-attachments/assets/ca289683-587e-4564-8dd6-b4c2e3ef02c9" />
+
 
 ---
 
