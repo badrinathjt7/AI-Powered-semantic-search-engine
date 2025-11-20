@@ -1,1 +1,29 @@
+Car Repair Tips - Example Corpus File
+
+This document contains simple explanations for fixing common car issues:
+
+1. Engine overheating:
+   - Check coolant levels
+   - Ensure the radiator fan is working
+   - Inspect hoses for leaks
+
+2. Car won't start:
+   - Test battery voltage
+   - Check starter motor connection
+   - Inspect spark plugs
+
+3. Brake noise:
+   - Check brake pads
+   - Clean brake rotors
+   - Inspect calipers
+
+4. Low mileage:
+   - Check tire pressure
+   - Replace air filters
+   - Inspect fuel injectors
+
+5. AC not cooling:
+   - Recharge refrigerant
+   - Inspect AC compressor
+   - Check coolant sensor
 
