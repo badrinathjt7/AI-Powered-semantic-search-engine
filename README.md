@@ -51,7 +51,11 @@ Upload multiple documents at once.
 
 One-click indexing with MiniLM model + FAISS vector store.
 
-<img width="1362" height="478" alt="image" src="https://github.com/user-attachments/assets/c20d0142-8a01-441a-8d50-6d00c010e241" />
+<p align="center">
+  <img width="1362" height="478" src="https://github.com/user-attachments/assets/c20d0142-8a01-441a-8d50-6d00c010e241" />
+  <br>
+  <sub><b>Building the FAISS Index</b></sub>
+</p>
 
 
 ---
@@ -62,7 +66,11 @@ Search using natural language, not keywords.
 
 Enter your query -> press 'search' button
 
-<img width="1388" height="424" alt="image" src="https://github.com/user-attachments/assets/cfb62940-5679-489b-a574-1ddc64c7dee9" />
+<p align="center">
+  <img width="1388" height="424" src="https://github.com/user-attachments/assets/cfb62940-5679-489b-a574-1ddc64c7dee9" />
+  <br>
+  <sub><b>Semantic Search Query Input</b></sub>
+</p>
 
 
 ---
@@ -73,17 +81,29 @@ Every result includes:
 
 #### ✔ Horizontal Relevance Bar  
 
-<img width="1312" height="356" alt="image" src="https://github.com/user-attachments/assets/e3327e5a-1854-4807-99c3-6a4f158c1faf" />
+<p align="center">
+  <img width="1312" height="356" src="https://github.com/user-attachments/assets/e3327e5a-1854-4807-99c3-6a4f158c1faf" />
+  <br>
+  <sub><b>Horizontal Relevance Bar</b></sub>
+</p>
 
 
 #### ✔ Color-Coded Relevance Tag  
 
-<img width="297" height="84" alt="image" src="https://github.com/user-attachments/assets/3e2152e8-26be-4eb5-a346-dd4f2a07a863" />
+<p align="center">
+  <img width="297" height="84" src="https://github.com/user-attachments/assets/3e2152e8-26be-4eb5-a346-dd4f2a07a863" />
+  <br>
+  <sub><b>Color-Coded Relevance Tag</b></sub>
+</p>
 
 
 #### ✔ Circular Gauge Meter (Plotly)  
 
-<img width="1306" height="550" alt="image" src="https://github.com/user-attachments/assets/33e5c88b-6aca-4702-a291-f092d456baac" />
+<p align="center">
+  <img width="1306" height="550" src="https://github.com/user-attachments/assets/33e5c88b-6aca-4702-a291-f092d456baac" />
+  <br>
+  <sub><b>Relevance Gauge Meter</b></sub>
+</p>
 
 
 ---
@@ -94,11 +114,19 @@ Extracts readable text and shows preview snippets.
 
 **[Preview music_guide.pdf]**
 
-<img width="1272" height="249" alt="image" src="https://github.com/user-attachments/assets/03f49796-79e0-44e8-b2d7-589308d526e3" />
+<p align="center">
+  <img width="1272" height="249" src="https://github.com/user-attachments/assets/03f49796-79e0-44e8-b2d7-589308d526e3" />
+  <br>
+  <sub><b>Preview of music_guide.pdf</b></sub>
+</p>
 
 **[Preview sampleeee.txt]**
 
-<img width="1242" height="206" alt="image" src="https://github.com/user-attachments/assets/ca289683-587e-4564-8dd6-b4c2e3ef02c9" />
+<p align="center">
+  <img width="1242" height="206" src="https://github.com/user-attachments/assets/ca289683-587e-4564-8dd6-b4c2e3ef02c9" />
+  <br>
+  <sub><b>Preview of sampleeee.txt</b></sub>
+</p>
 
 
 ---
@@ -158,8 +186,6 @@ semantic-search-pro/
 │ ├── relevance_visualization.png
 
 │ └── project_architecture.png
-
-
 
 
 
@@ -235,7 +261,12 @@ wifi keeps disconnecting
 
 **🧠 Architecture Diagram**
 
-![Project Architecture](assets/architecture.png)
+<p align="center">
+  <img src="assets/architecture.png" width="850"/>
+  <br>
+  <sub><b>Semantic Search System Architecture</b></sub>
+</p>
+
 
 🛠️ Technologies Used
 
