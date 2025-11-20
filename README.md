@@ -223,7 +223,7 @@ Creates FAISS vector index
 
 Example:
 
-pgsql
+
 
 why is my car engine overheating?
 
