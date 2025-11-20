@@ -112,7 +112,7 @@ Every result includes:
 
 Extracts readable text and shows preview snippets.
 
-**[Preview music_guide.pdf]**
+
 
 <p align="center">
   <img width="1272" height="249" src="https://github.com/user-attachments/assets/03f49796-79e0-44e8-b2d7-589308d526e3" />
@@ -120,7 +120,7 @@ Extracts readable text and shows preview snippets.
   <sub><b>Preview of music_guide.pdf</b></sub>
 </p>
 
-**[Preview sampleeee.txt]**
+
 
 <p align="center">
   <img width="1242" height="206" src="https://github.com/user-attachments/assets/ca289683-587e-4564-8dd6-b4c2e3ef02c9" />
