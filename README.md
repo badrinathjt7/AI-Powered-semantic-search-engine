@@ -298,4 +298,4 @@ Add tagging and document categorization
 
 👨‍💻 Author
 
-https://www.linkedin.com/in/badrinath-j-t-3349a627b/
+[Connect with me on LinkedIn](https://www.linkedin.com/in/badrinath-j-t-3349a627b/)
