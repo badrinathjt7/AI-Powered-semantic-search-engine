@@ -1,9 +1,9 @@
-# 🔍 Semantic Search Engine (Advanced AI-Based Document Search)
+#  Semantic Search Engine (Advanced AI-Based Document Search)
 
 A fully interactive **semantic search engine** built with:
 - 🧠 **Sentence Transformers**
   
-- 🚀 **FAISS Vector Database**
+- **FAISS Vector Database**
 
 - 🖥️ **Streamlit UI**
 
