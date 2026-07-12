@@ -1,6 +1,6 @@
 # 🔍 AI Semantic Search Engine — Because Keywords Are So Last Decade
 
-> I built this because I got frustrated with how traditional search works. You type "car won't start in cold weather" and get results about car washes. This project fixes that — it actually *understands* what you mean.
+> We've all had those moments where we're stressed, trying to find a quick answer—like why a car won't start in the cold—only for a search engine to suggest a car wash. It's incredibly frustrating. I built this project to fix that, focusing on real understanding rather than just keyword matching.
 
 Built with **Sentence Transformers + FAISS + Streamlit**, it lets you upload your own PDF or TXT documents and search through them using plain natural language — the same way you'd ask a friend a question.
 
@@ -11,7 +11,7 @@ Built with **Sentence Transformers + FAISS + Streamlit**, it lets you upload you
 - [Why I Built This](#why-i-built-this)
 - [What It Looks Like](#what-it-looks-like)
 - [Features](#features)
-- [How It Actually Works (Plain English)](#how-it-actually-works-plain-english)
+- [How It Actually Works (Plain English)](#how-it-actually-works)
 - [Tech Stack](#tech-stack)
 - [Project Architecture](#project-architecture)
 - [How to Run It Yourself](#how-to-run-it-yourself)
