@@ -37,9 +37,10 @@ What started as a curiosity project turned into something I'm genuinely proud of
 
 ### 🏠 Home Screen
 
-> 📸 _[Add your Home Screen screenshot here — assets/screenshots/home.png]_
+> <img width="1920" height="823" alt="image" src="https://github.com/user-attachments/assets/590dd63d-1596-4718-969f-f4dffba50db2" />
 
-The interface is clean and minimal. Upload your files on the left sidebar, build the index with one click, and start searching. That's it.
+
+Upload your files on the left sidebar, build the index with one click, and start searching. That's it.
 
 ---
 
@@ -49,9 +50,11 @@ The interface is clean and minimal. Upload your files on the left sidebar, build
 
 You can upload as many files as you want — mix PDFs and TXT files freely. I wanted the uploading experience to feel effortless, so the sidebar handles everything without any clutter in the main view.
 
-> 📸 _[Add your file upload sidebar screenshot here]_
+> <img width="413" height="543" alt="image" src="https://github.com/user-attachments/assets/bc419e28-2af3-40e2-92bd-a2422b67596b" />
 
-> 📸 _[Add your uploaded files list screenshot here]_
+
+> <img width="415" height="474" alt="image" src="https://github.com/user-attachments/assets/f81a69aa-689c-4933-9224-f7fa29024fa8" />
+
 
 ---
 
@@ -64,7 +67,7 @@ Once your files are uploaded, you click **"Build Index"** and the app does three
 
 I found it really satisfying to watch this step complete — the moment the index is built, your documents become searchable in a way that no keyword search can match.
 
-> 📸 _[Add your FAISS index building screenshot here]_
+> <img width="1362" height="478" alt="image" src="https://github.com/user-attachments/assets/c3b62db2-3ce0-4886-b439-b13d3cd4f6ca" />
 
 ---
 
@@ -74,7 +77,8 @@ This is the part I'm most proud of. You type a question in plain English — som
 
 It works because both your query and the document chunks are converted into the same vector space. Similar meanings end up close together in that space, and FAISS finds the nearest ones almost instantly.
 
-> 📸 _[Add your search query input screenshot here]_
+> <img width="1388" height="424" alt="image" src="https://github.com/user-attachments/assets/8339eb83-f9b4-4b36-b414-789ad9896215" />
+
 
 ---
 
@@ -85,17 +89,20 @@ I noticed that just showing a list of results with a raw similarity score felt c
 **Horizontal Relevance Bar**
 A progress-bar style indicator that fills up based on how closely the result matches your query. You can scan down the results and immediately see which ones are strong matches.
 
-> 📸 _[Add your horizontal relevance bar screenshot here]_
+> <img width="1312" height="356" alt="image" src="https://github.com/user-attachments/assets/84feaa03-bf4b-48f1-abc4-0c8dbbcbd5f5" />
+
 
 **Color-Coded Relevance Tag**
 Each result gets a tag — green for high relevance, yellow for medium, red for low. I added this because I wanted even a non-technical user to be able to glance at results and understand the confidence level without reading any numbers.
 
-> 📸 _[Add your color-coded relevance tag screenshot here]_
+> <img width="297" height="84" alt="image" src="https://github.com/user-attachments/assets/b618f7f5-e29c-4771-b6ed-1b1d09534aff" />
+
 
 **Circular Gauge Meter (Plotly)**
 For the top result, there's a speedometer-style gauge that displays the relevance score. This was honestly just fun to build, but it also makes the most relevant result feel more prominent and satisfying to look at.
 
-> 📸 _[Add your gauge meter screenshot here]_
+> <img width="1306" height="550" alt="image" src="https://github.com/user-attachments/assets/17ca7f17-d585-43a3-aabf-5ee87b9a4732" />
+
 
 ---
 
@@ -103,9 +110,10 @@ For the top result, there's a speedometer-style gauge that displays the relevanc
 
 Each search result shows a snippet of the actual text from the matching document, along with the source filename. I feel this is crucial — you shouldn't have to open the original file to understand *why* a result was returned.
 
-> 📸 _[Add your PDF preview screenshot here — music_guide.pdf]_
+> <img width="1242" height="206" alt="image" src="https://github.com/user-attachments/assets/e64b6489-c002-42b1-a771-fdeaf8643068" />
 
-> 📸 _[Add your TXT preview screenshot here — sampleeee.txt]_
+
+> <img width="1272" height="249" alt="image" src="https://github.com/user-attachments/assets/ab70ede4-c1bb-4261-abdb-98c8dc60dd14" />
 
 ---
 
@@ -115,7 +123,7 @@ I was genuinely surprised by how fast FAISS is. Even with hundreds of document c
 
 ---
 
-## How It Actually Works (Plain English)
+## How It Actually Works:
 
 If you've never heard of embeddings or vector search before, here's how I'd explain what's happening under the hood:
 
@@ -201,7 +209,8 @@ User Uploads PDF / TXT Files
    - Gauge meter (top result)
 ```
 
-> 📸 _[Add your architecture diagram here — assets/architecture.png]_
+> <img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/33406abc-9dab-41f1-b053-b8004ef10032" />
+
 
 ---
 
@@ -316,12 +325,12 @@ I'd love to hear your thoughts — whether it's feedback, suggestions, or just q
 |-------------|--------------|
 | 🐙 GitHub    | [badrinathjt7](https://github.com/badrinathjt7) |
 | 💼 LinkedIn  | [Badrinath J T](https://www.linkedin.com/in/badrinath-j-t-3349a627b/) |
-| 🐦 Twitter/X | [@YourHandle — add yours here] |
-| 📧 Email     | [your.email@example.com — add yours here] |
-| 🤗 Kaggle    | [Your Kaggle Profile — add yours here] |
+| Portfolio | [[@YourHandle — add yours here](https://badrinathjt.lovable.app/)] |
+| 🤗 Kaggle    | [[Your Kaggle Profile — add yours here](https://www.kaggle.com/badrinathjt21bai1587)] |
 
 ---
 
 <p align="center">
   Built out of genuine curiosity about how machines understand language 🔍
+         If you like this project, feel free to ⭐ the repo—it means a lot!
 </p>
